@@ -376,7 +376,7 @@ public class GamePanel extends javax.swing.JPanel implements ScoreChart.Listener
 		final int destination = getTargetY();
 		final long startTime = System.currentTimeMillis();
 		pieces[turnNum].setVisible(true);
-		Timer timer = new Timer((8000/(destination)), new ActionListener() 
+		Timer timer = new Timer((int)((float)destination/(100+26.5)), new ActionListener() 
 		{
 		    @Override
                     public void actionPerformed(ActionEvent e) {
@@ -548,7 +548,7 @@ public class GamePanel extends javax.swing.JPanel implements ScoreChart.Listener
 				turnNum +=1;
 
 				//Displays who is playing this turn
-				if(turnNum%2 == 0){
+				if(game.getCurrentPlayer() == players[0]){
 					pNameDisplay.setForeground(Color.red);
 				}
 				else{
@@ -557,17 +557,21 @@ public class GamePanel extends javax.swing.JPanel implements ScoreChart.Listener
 
 				//Turn goes up, unless there is a tie
 				if(turnNum == 42){
-					for (GUIPiece piece : pieces) {
-						piece.setIcon(null);
-						topGlass.remove(piece);
-					}
+					//for (GUIPiece piece : pieces) {
+						//piece.setIcon(null);
+						//topGlass.remove(piece);
+						//piece.setIcon(null);
+					//}
 					gui.setWinner("It's a tie!");
 					board.clear();
 					initNewGame();
 					gui.addGameOver();
 				}
 				else{
-					pieces[turnNum] = new GUIPiece(turnNum%2);
+					if (game.getCurrentPlayer()==players[1])
+						pieces[turnNum] = new GUIPiece(1);
+					else
+						pieces[turnNum] = new GUIPiece(0);
 					pieces[turnNum].setLocation(newDrawPos,0);
 					if (game.getCurrentPlayer() == players[1]
 					    && isComputerEnabled) {
@@ -611,13 +615,19 @@ public class GamePanel extends javax.swing.JPanel implements ScoreChart.Listener
 		whoPlayed = 1;
 		falling = false;
 		pieces = new GUIPiece[43];
-		pieces[turnNum] = new GUIPiece(turnNum);
+		if (game.getCurrentPlayer() == players[1])
+			pieces[turnNum] = new GUIPiece(1);
+		else 
+			pieces[turnNum] = new GUIPiece(0);
 		pieces[turnNum].setLocation(newDrawPos, 0);
 		if (game.getCurrentPlayer() == players[1] && isComputerEnabled) {
 			pieces[turnNum].setVisible(false);
 		}
 		add(pieces[turnNum]);
-		pNameDisplay.setForeground(Color.red);
+		if (game.getCurrentPlayer() == players[0])
+			pNameDisplay.setForeground(Color.red);
+		else
+			pNameDisplay.setForeground(Color.blue);
 		pNameDisplay.setText(game.getCurrentPlayer().getName() + "'s turn.");
 		turnDisplay.setForeground(Color.white);
 		turnDisplay.setText("Round number " +(turnNum/2+1));
@@ -665,7 +675,7 @@ public class GamePanel extends javax.swing.JPanel implements ScoreChart.Listener
 			public void actionPerformed(ActionEvent e) {
 				long tick = GLOW_START_TIME - System.currentTimeMillis();
 				tick = (tick/100);
-				System.out.println(tick%6);
+				//System.out.println(tick%6);
 				cP.setIcon(cP.getGlow((int)tick%6));
 				topGlass.invalidate();
 				topGlass.revalidate();

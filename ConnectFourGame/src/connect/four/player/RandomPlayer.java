@@ -21,7 +21,7 @@ public class RandomPlayer implements Player {
 	    while (board.whoPlayed(chosenX, height-1) != null && chosenX != x) {
 		chosenX = (x + 1) % width;
 	    }
-	    x = chosenX;
+	    x = chosenX; 
 	}
 	board.play(x, this);
     }

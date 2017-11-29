@@ -64,7 +64,7 @@ public class ConsolePlayer implements Player, ScoreChart.Listener {
                 System.out.print(
                     played == this ? "@" :
                     played == null ? "O" : "X"
-                );
+                ); 
             }
             System.out.println();
         }
