@@ -1,4 +1,4 @@
-package connect.four.tests;
+package connect.four.test;
 
 import static org.junit.Assert.*;
 
@@ -6,7 +6,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-public class BoardTest {
+public class ConsolePlayerTest {
 
 	@Before
 	public void setUp() throws Exception {
