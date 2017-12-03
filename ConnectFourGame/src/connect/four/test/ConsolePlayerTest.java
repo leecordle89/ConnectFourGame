@@ -1,24 +1,49 @@
 package connect.four.test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
+
+import connect.four.player.ConsolePlayer;
 
 public class ConsolePlayerTest {
 
-	@Before
-	public void setUp() throws Exception {
-	}
-
-	@After
-	public void tearDown() throws Exception {
-	}
-
+	private ConsolePlayer player;
+	
 	@Test
-	public void test() {
-		fail("Not yet implemented");
+	public void testConstructorSuccess() 
+	{
+		System.out.println("Testing Constructor");
+		player = new ConsolePlayer("Hello!");
+		assertEquals("Hello!", player.getName());
+	}
+	
+	@Test
+	public void testGetName() 
+	{
+		System.out.println("Testing GetName");
+		player = new ConsolePlayer("Hello!");
+		assertEquals("Hello!", player.getName());
+	}
+	
+	@Test
+	public void testSetName()
+	{
+		System.out.println("Testing set name");
+		player = new ConsolePlayer("Hello!");
+		player.setName("Changed");
+		assertEquals("Changed", player.getName());
+	}
+	
+	@Test(expected = NullPointerException.class)
+	public void testConstructorError() 
+	{
+		player = new ConsolePlayer(null);
+	}
+	@Test(expected = NullPointerException.class)
+	public void testSetGetNameNegative() 
+	{
+		player.setName(null);
 	}
 
 }
