@@ -3,24 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package connect.four.gui;
 
 import connect.four.Game;
-
 
 public class MainMenuPanel extends javax.swing.JPanel {
 
 	private String name1, name2;
 	GUI gui;
 	private boolean isEnabled;
-	
+
 	public MainMenuPanel(GUI gui) {
 		initComponents();
-		setSize(1280,800);
+		setSize(1280, 800);
 		this.gui = gui;
 		isEnabled = false;
-		
+
 		setVisible(true);
 	}
 
@@ -53,11 +51,21 @@ public class MainMenuPanel extends javax.swing.JPanel {
                                 tfplayer1ActionPerformed(evt);
                         }
                 });
+                tfplayer1.addKeyListener(new java.awt.event.KeyAdapter() {
+                        public void keyReleased(java.awt.event.KeyEvent evt) {
+                                tfplayer1KeyReleased(evt);
+                        }
+                });
 
                 tfplayer2.setText("Player 2");
                 tfplayer2.addActionListener(new java.awt.event.ActionListener() {
                         public void actionPerformed(java.awt.event.ActionEvent evt) {
                                 tfplayer2ActionPerformed(evt);
+                        }
+                });
+                tfplayer2.addKeyListener(new java.awt.event.KeyAdapter() {
+                        public void keyReleased(java.awt.event.KeyEvent evt) {
+                                tfplayer2KeyReleased(evt);
                         }
                 });
 
@@ -135,11 +143,11 @@ public class MainMenuPanel extends javax.swing.JPanel {
         }// </editor-fold>//GEN-END:initComponents
 
         private void tfplayer2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfplayer2ActionPerformed
-                
+
         }//GEN-LAST:event_tfplayer2ActionPerformed
 
         private void tfplayer1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfplayer1ActionPerformed
-                
+
         }//GEN-LAST:event_tfplayer1ActionPerformed
 
         private void butPlayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butPlayActionPerformed
@@ -152,26 +160,37 @@ public class MainMenuPanel extends javax.swing.JPanel {
         }//GEN-LAST:event_butPlayActionPerformed
 
         private void jtComputerToggleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtComputerToggleActionPerformed
-                if(!isEnabled){
+		if (!isEnabled) {
 			tfplayer2.setText("Computer");
 			tfplayer2.setEditable(false);
 			isEnabled = true;
-		}
-		else{
+		} else {
 			tfplayer2.setText("Player 2");
 			tfplayer2.setEditable(true);
 			isEnabled = false;
 		}
-		
-	
-		
+
         }//GEN-LAST:event_jtComputerToggleActionPerformed
 
-	public boolean getIsEnabled(){
+    private void tfplayer1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfplayer1KeyReleased
+		if (tfplayer1.getText().equals("") || tfplayer2.getText().equals("")) {
+			butPlay.setEnabled(false);
+		} else {
+			butPlay.setEnabled(true);
+		}
+    }//GEN-LAST:event_tfplayer1KeyReleased
+
+        private void tfplayer2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfplayer2KeyReleased
+		if (tfplayer1.getText().equals("") || tfplayer2.getText().equals("")) {
+			butPlay.setEnabled(false);
+		} else {
+			butPlay.setEnabled(true);
+		}
+        }//GEN-LAST:event_tfplayer2KeyReleased
+
+	public boolean getIsEnabled() {
 		return isEnabled;
 	}
-	
-	
 
         // Variables declaration - do not modify//GEN-BEGIN:variables
         private javax.swing.JButton butPlay;
