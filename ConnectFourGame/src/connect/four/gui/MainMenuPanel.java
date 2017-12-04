@@ -42,7 +42,7 @@ public class MainMenuPanel extends javax.swing.JPanel {
                 setBackground(new java.awt.Color(0, 0, 0));
 
                 title.setFont(new java.awt.Font("Lucida Grande", 0, 48)); // NOI18N
-                title.setForeground(new java.awt.Color(255, 255, 255));
+                title.setForeground(new java.awt.Color(255, 179, 0));
                 title.setText("Connect Four");
 
                 tfplayer1.setText("Player 1");

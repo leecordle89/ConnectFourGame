@@ -20,14 +20,24 @@ public class GUI extends javax.swing.JFrame {
 	String p2Name;
 	String winner;
 	int score1, score2;
+	private javax.swing.JLabel bgImage;
+    private javax.swing.JLabel kitty;
 	
 	public GUI() {
+		bgImage = new javax.swing.JLabel();
+        kitty = new javax.swing.JLabel();
 		initComponents();
 		score1 = 0;
 		score2 = 0;
 		//gamePanel = new GamePanel(this);
 		mainMenu = new MainMenuPanel(this);
 		add(mainMenu);
+
+		bgImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/connect4_bg.png")));
+        bgImage.setText("jLabel3");
+        bgImage.setIgnoreRepaint(true);
+        mainMenu.add(bgImage);
+        bgImage.setBounds(0, 0, 1280, 740);
 		
 	}
 
@@ -48,6 +58,8 @@ public class GUI extends javax.swing.JFrame {
                         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGap(0, 800, Short.MAX_VALUE)
                 );
+                
+
 
                 pack();
         }// </editor-fold>//GEN-END:initComponents
@@ -134,6 +146,13 @@ public class GUI extends javax.swing.JFrame {
 		System.out.println("New Game Over Panel added");
 		gameOverPanel = new GameOverPanel(this, winner);
 		add(gameOverPanel);
+		
+        kitty.setIcon(new javax.swing.ImageIcon(getClass().getResource("/kitty.png")));
+        kitty.setText("kitty");
+        kitty.setIgnoreRepaint(true);
+        gameOverPanel.add(kitty);
+        kitty.setBounds(30, -30, 1280, 800);
+        
 		updateDisplay();
 	}
 	

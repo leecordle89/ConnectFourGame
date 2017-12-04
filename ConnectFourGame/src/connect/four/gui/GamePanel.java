@@ -79,6 +79,7 @@ public class GamePanel extends javax.swing.JPanel implements ScoreChart.Listener
                 col7 = new javax.swing.JPanel();
                 player2NameBox = new javax.swing.JLabel();
                 bgImage = new javax.swing.JLabel();
+                scoreBgImage = new javax.swing.JLabel();
 
                 setBackground(new java.awt.Color(0, 0, 0));
                 setPreferredSize(new java.awt.Dimension(1280, 800));
@@ -93,25 +94,25 @@ public class GamePanel extends javax.swing.JPanel implements ScoreChart.Listener
                 player1NameBox.setForeground(new java.awt.Color(255, 255, 255));
                 player1NameBox.setText("player 1");
                 add(player1NameBox);
-                player1NameBox.setBounds(1070, 40, 210, 40);
+                player1NameBox.setBounds(1102, 60, 210, 40);
 
                 currentWins.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
                 currentWins.setForeground(new java.awt.Color(255, 255, 255));
                 currentWins.setText("CURRENT WINS");
                 add(currentWins);
-                currentWins.setBounds(1070, 0, 200, 40);
+                currentWins.setBounds(1102, 20, 200, 40);
 
                 pNameDisplay.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
                 pNameDisplay.setForeground(new java.awt.Color(255, 255, 255));
                 pNameDisplay.setText("jLabel2");
                 add(pNameDisplay);
-                pNameDisplay.setBounds(1070, 210, 200, 40);
+                pNameDisplay.setBounds(1102, 230, 200, 40);
 
                 turnDisplay.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
                 turnDisplay.setForeground(new java.awt.Color(255, 255, 255));
                 turnDisplay.setText("jLabel2");
                 add(turnDisplay);
-                turnDisplay.setBounds(1070, 150, 200, 40);
+                turnDisplay.setBounds(1102, 170, 200, 40);
 
                 col1.setBackground(new java.awt.Color(102, 102, 102));
                 col1.setOpaque(false);
@@ -251,7 +252,7 @@ public class GamePanel extends javax.swing.JPanel implements ScoreChart.Listener
                 player2NameBox.setForeground(new java.awt.Color(255, 255, 255));
                 player2NameBox.setText("player 1");
                 topGlass.add(player2NameBox);
-                player2NameBox.setBounds(1070, 90, 210, 40);
+                player2NameBox.setBounds(1102, 110, 210, 40);
 
                 add(topGlass);
                 topGlass.setBounds(0, 0, 1280, 800);
@@ -261,6 +262,12 @@ public class GamePanel extends javax.swing.JPanel implements ScoreChart.Listener
                 bgImage.setIgnoreRepaint(true);
                 add(bgImage);
                 bgImage.setBounds(0, 150, 1070, 590);
+
+                scoreBgImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/score_bg.png")));
+                scoreBgImage.setText("jLabel2");
+                scoreBgImage.setIgnoreRepaint(true);
+                add(scoreBgImage);
+                scoreBgImage.setBounds(1070, 0, 210, 740);
         }// </editor-fold>//GEN-END:initComponents
 
         private void col1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_col1MouseEntered
@@ -706,6 +713,7 @@ public class GamePanel extends javax.swing.JPanel implements ScoreChart.Listener
         private javax.swing.JLabel player2NameBox;
         private javax.swing.JPanel topGlass;
         private javax.swing.JLabel turnDisplay;
+        private javax.swing.JLabel scoreBgImage;
         // End of variables declaration//GEN-END:variables
 
 	
